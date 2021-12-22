@@ -1,0 +1,10 @@
+name: Sumo
+version: '${project.version}'
+main: com.sumo.main.Main
+api-version: 1.17
+authors: [ Rory ]
+description: A Sumo Plugin.
+website: http://ikeysurvival.co
+
+commands:
+  sumo:

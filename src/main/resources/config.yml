@@ -1,0 +1,35 @@
+# Sumo Plugin
+# Made by Rory
+
+# General
+
+# PREFIX is the beginning of each message.
+PREFIX: '&f[&4Sumo&f]'
+
+# START-SHOW-PUBLIC(true/false) If it is true, Other Peoples will get a message in the Chat that Person1 is Fighting with Person2.
+START-SHOW-PUBLIC: true
+# FINISH-SHOW-PUBLIC(true/false) If it is true, Other Peoples will get a message in the Chat when the Match is finished and will get the results.
+FINISH-SHOW-PUBLIC: true
+
+# Messages
+
+# START-PRIVATE-MESSAGE(String / Text) is what the message will be PRIVATELY when the round started.
+START-PRIVATE-MESSAGE: 'You are now in A Sumo match with {opponent}, Good Luck!'
+# FINISH-PRIVATE-MESSAGE(String / Text) is what the message will be PRIVATELY when the round finished.
+FINISH-LOST-PRIVATE-MESSAGE: 'You have lost in a match with {winner}, Good Luck next time!'
+FINISH-WON-PRIVATE-MESSAGE: 'You have won in a match with {loser}, Nice one!'
+# START-PUBLIC-MESSAGE(String / Text) is what the message will be PUBLICLY when the round starts.
+START-PUBLIC-MESSAGE: '{player1} is facing against {player2}, Wish them luck!'
+# FINISH-PUBLIC-MESSAGE(String / Text) is what the message will be PUBLICLY when the round is finished.
+FINISH-PUBLIC-MESSAGE: '{winner} have won against {loser}, Good Game!'
+
+# Locations
+
+# WARNING: IT IS RECOMMENDED NOT TO CHANGE ANYTHING HERE! DO IT IN GAME WITH /sumo admin setlocation <name>
+# PLAYER1-LOCATION is the First Player's Location in the arena.
+PLAYER1-LOCATION:
+# PLAYER2-LOCATION is the Second Player's Location in the arena.
+PLAYER2-LOCATION:
+# SPECTATOR-LOCATION is the Spectator's Teleport location in the Arena.
+SPECTATOR-LOCATION:
+
