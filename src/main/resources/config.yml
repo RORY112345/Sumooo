@@ -22,14 +22,3 @@ FINISH-WON-PRIVATE-MESSAGE: 'You have won in a match with {loser}, Nice one!'
 START-PUBLIC-MESSAGE: '{player1} is facing against {player2}, Wish them luck!'
 # FINISH-PUBLIC-MESSAGE(String / Text) is what the message will be PUBLICLY when the round is finished.
 FINISH-PUBLIC-MESSAGE: '{winner} have won against {loser}, Good Game!'
-
-# Locations
-
-# WARNING: IT IS RECOMMENDED NOT TO CHANGE ANYTHING HERE! DO IT IN GAME WITH /sumo admin setlocation <name>
-# PLAYER1-LOCATION is the First Player's Location in the arena.
-PLAYER1-LOCATION:
-# PLAYER2-LOCATION is the Second Player's Location in the arena.
-PLAYER2-LOCATION:
-# SPECTATOR-LOCATION is the Spectator's Teleport location in the Arena.
-SPECTATOR-LOCATION:
-

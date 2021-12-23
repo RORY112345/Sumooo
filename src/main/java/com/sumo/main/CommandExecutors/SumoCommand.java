@@ -9,6 +9,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.io.IOException;
+
 public class SumoCommand implements CommandExecutor {
 
     private final Main main;
@@ -36,24 +38,30 @@ public class SumoCommand implements CommandExecutor {
 
                         if (args[2].equalsIgnoreCase("player1")) {
 
-                            String adminLocation = LocUtils.encode(player.getLocation());
+                            Location adminLocation = player.getLocation();
 
-                            main.getConfig().set("PLAYER1-LOCATION", adminLocation);
-                            main.saveConfig();
+                            main.getModifyLocationsFile().createSection("PLAYER1-LOCATION");
+                            main.getModifyLocationsFile().set("PLAYER1-LOCATION", adminLocation);
+
+                            main.saveCustomYML(main.getModifyLocationsFile(), main.getLocationsFile());
 
                             player.sendMessage(ChatColor.GOLD + "Successfully set Player 1's Location to the Location your standing in.");
                         } else if (args[2].equalsIgnoreCase("player2")) {
-                            String adminLocation = LocUtils.encode(player.getLocation());
+                            Location adminLocation = player.getLocation();
 
-                            main.getConfig().set("PLAYER2-LOCATION", adminLocation);
-                            main.saveConfig();
+                            main.getModifyLocationsFile().createSection("PLAYER2-LOCATION");
+                            main.getModifyLocationsFile().set("PLAYER2-LOCATION", adminLocation);
+
+                            main.saveCustomYML(main.getModifyLocationsFile(), main.getLocationsFile());
 
                             player.sendMessage(ChatColor.GOLD + "Successfully set Player 2's Location to the Location your standing in.");
                         } else if (args[2].equalsIgnoreCase("spectator")) {
-                            String adminLocation = LocUtils.encode(player.getLocation());
+                            Location adminLocation = player.getLocation();
 
-                            main.getConfig().set("SPECTATOR-LOCATION", adminLocation);
-                            main.saveConfig();
+                            main.getModifyLocationsFile().createSection("PLAYER3-LOCATION");
+                            main.getModifyLocationsFile().set("PLAYER3-LOCATION", adminLocation);
+
+                            main.saveCustomYML(main.getModifyLocationsFile(), main.getLocationsFile());
 
                             player.sendMessage(ChatColor.GOLD + "Successfully set Spectator's Location to the Location your standing in.");
                         }
