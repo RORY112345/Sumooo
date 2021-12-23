@@ -70,17 +70,23 @@ public class SumoCommand implements CommandExecutor {
                     player.sendMessage(ChatColor.RED + "You don't have any permission to use this command, If you believe this is an Error contact Server Owner / Staff.");
                 }
             } else if (args[0].equalsIgnoreCase("join")) {
+                if (main.getPlayer1() == player || main.getPlayer2() == player) {
+                    player.sendMessage(ChatColor.RED + "You're already in the queue!");
+                    return false;
+                }
                 if (main.getPlayer1() == null) {
                     main.setPlayer1(player);
-                    player.sendMessage(ChatColor.translateAlternateColorCodes('&',main.getConfig().getString("PREFIX") + " &6You have joined the Sumo Match, Please wait for other Players to join. Then start the match by doing " + ChatColor.GRAY + "/sumo start");
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&',main.getConfig().getString("PREFIX") + " &6You have joined the Sumo Match, Please wait for other Players to join. Then start the match by doing " + ChatColor.GRAY + "/sumo start"));
                     return false;
                 }
                 if (main.getPlayer2() == null) {
                     main.setPlayer1(player);
-                    player.sendMessage(ChatColor.GOLD + main.getConfig().getString("PREFIX") + " You have joined the Sumo Match, Please wait for other Players to join. Then start the match by doing " + ChatColor.GRAY + "/sumo start");
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&',main.getConfig().getString("PREFIX") + " &6You have joined the Sumo Match, Please wait for other Players to join. Then start the match by doing " + ChatColor.GRAY + "/sumo start"));
                 } else {
                     player.sendMessage(ChatColor.RED + "The queue is currently full. Please try again later!");
                 }
+            } else if (args[0].equalsIgnoreCase("start")) {
+
             }
         }
 
