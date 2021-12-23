@@ -4,6 +4,7 @@ import com.sumo.main.CommandExecutors.SumoCommand;
 import com.sumo.main.Events.SumoEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.yaml.snakeyaml.Yaml;
 
@@ -15,6 +16,10 @@ public final class Main extends JavaPlugin {
     // Files
     private File locationsFile;
     private YamlConfiguration modifyLocationsFile;
+
+    // Players
+    private Player player1 = null;
+    private Player player2 = null;
 
     @Override
     public void onEnable() {
@@ -53,6 +58,16 @@ public final class Main extends JavaPlugin {
     // File getter
     public File getLocationsFile() { return locationsFile; }
 
+    // Player getter
+
+    public Player getPlayer1() { return player1; }
+    public Player getPlayer2() { return player2; }
+
+    // Player Setter
+
+    public void setPlayer1(Player player) { this.player1 = player; }
+
+    public void setPlayer2(Player player) { this.player2 = player; }
 
     private void initiateFiles() throws IOException {
         locationsFile = new File(Bukkit.getServer().getPluginManager().getPlugin("Sumo").getDataFolder(), "locations.yml");
