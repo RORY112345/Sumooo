@@ -2,6 +2,7 @@ package com.sumo.main.CommandExecutors;
 
 import com.sumo.main.Main;
 import com.sumo.main.YML.LocUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -80,13 +81,33 @@ public class SumoCommand implements CommandExecutor {
                     return false;
                 }
                 if (main.getPlayer2() == null) {
-                    main.setPlayer1(player);
+                    main.setPlayer2(player);
                     player.sendMessage(ChatColor.translateAlternateColorCodes('&',main.getConfig().getString("PREFIX") + " &6You have joined the Sumo Match, Please wait for other Players to join. Then start the match by doing " + ChatColor.GRAY + "/sumo start"));
                 } else {
                     player.sendMessage(ChatColor.RED + "The queue is currently full. Please try again later!");
                 }
             } else if (args[0].equalsIgnoreCase("start")) {
+                if (main.getPlayer1() != player && main.getPlayer2() != player) {
+                    player.sendMessage(ChatColor.RED + "You're not even in the queue!");
+                    return false;
+                }
+                if (main.getPlayer1() == null || main.getPlayer2() == null) {
+                    player.sendMessage(ChatColor.RED + "There's not enough player to start the Game!");
+                    return false;
+                }
 
+                main.setPlayer1Opponent(main.getPlayer2());
+                main.setPlayer2Opponent(main.getPlayer1());
+
+                if (main.getPlayer1() != null && main.getPlayer2() != null) {
+                    main.getPlayer1().sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("PREFIX") + " " + main.getConfig().getString("START-PRIVATE-MESSAGE").replace("{opponent}", main.getPlayer1Opponent().getName())));
+                    main.getPlayer2().sendMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("PREFIX") + " " + main.getConfig().getString("START-PRIVATE-MESSAGE").replace("{opponent}", main.getPlayer2Opponent().getName())));
+                    if (main.getConfig().getBoolean("START-SHOW-PUBLIC") == true) {
+                        Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', main.getConfig().getString("PREFIX") + " " + main.getConfig().getString("START-PUBLIC-MESSAGE").replace("{player1}", main.getPlayer1().getName()).replace("{player2}", main.getPlayer2().getName())));
+                    }
+                    main.getPlayer1().teleport(main.getModifyLocationsFile().getLocation("PLAYER1-LOCATION"));
+                    main.getPlayer2().teleport(main.getModifyLocationsFile().getLocation("PLAYER2-LOCATION"));
+                }
             }
         }
 
