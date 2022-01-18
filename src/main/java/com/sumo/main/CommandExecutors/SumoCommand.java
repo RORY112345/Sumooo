@@ -107,6 +107,7 @@ public class SumoCommand implements CommandExecutor {
                     }
                     main.getPlayer1().teleport(main.getModifyLocationsFile().getLocation("PLAYER1-LOCATION"));
                     main.getPlayer2().teleport(main.getModifyLocationsFile().getLocation("PLAYER2-LOCATION"));
+                    main.setMatchStarted(true);
                 }
             }
         }

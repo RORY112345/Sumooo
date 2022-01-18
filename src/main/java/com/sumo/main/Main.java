@@ -22,6 +22,7 @@ public final class Main extends JavaPlugin {
     private Player player2 = null;
     private Player player1Opponent = null;
     private Player player2Opponent = null;
+    private boolean matchStarted = false;
 
     @Override
     public void onEnable() {
@@ -30,6 +31,10 @@ public final class Main extends JavaPlugin {
         // CommandExecutors
 
         getCommand("sumo").setExecutor(new SumoCommand(this));
+
+        // Tab Completions
+
+        getCommand("sumo").setTabCompleter(new SumoCommandTab(this));
 
         // Events
 
@@ -67,7 +72,7 @@ public final class Main extends JavaPlugin {
     public Player getPlayer1Opponent() { return player1Opponent; }
     public Player getPlayer2Opponent() { return player2Opponent; }
 
-    // Player Setter
+    // Player setter
 
     public void setPlayer1(Player player) { this.player1 = player; }
 
@@ -76,6 +81,15 @@ public final class Main extends JavaPlugin {
     public void setPlayer1Opponent(Player player) { this.player1Opponent = player; }
 
     public void setPlayer2Opponent(Player player) { this.player2Opponent = player; }
+
+    // Boolean getter
+    public boolean getMatchStarted() { return matchStarted; }
+
+    // Boolean setter
+
+    public void setMatchStarted(boolean value) {
+        this.matchStarted = value;
+    }
 
     private void initiateFiles() throws IOException {
         locationsFile = new File(Bukkit.getServer().getPluginManager().getPlugin("Sumo").getDataFolder(), "locations.yml");

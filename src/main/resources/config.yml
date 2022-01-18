@@ -19,6 +19,6 @@ START-PRIVATE-MESSAGE: 'You are now in A Sumo match with {opponent}, Good Luck!'
 FINISH-LOST-PRIVATE-MESSAGE: 'You have lost in a match with {winner}, Good Luck next time!'
 FINISH-WON-PRIVATE-MESSAGE: 'You have won in a match with {loser}, Nice one!'
 # START-PUBLIC-MESSAGE(String / Text) is what the message will be PUBLICLY when the round starts.
-START-PUBLIC-MESSAGE: '{player1} is facing against {player2}, Wish them luck!'
+START-PUBLIC-MESSAGE: '{player1} is facing against {player2}, If you want to watch do /sumo spectate. Wish them luck!'
 # FINISH-PUBLIC-MESSAGE(String / Text) is what the message will be PUBLICLY when the round is finished.
 FINISH-PUBLIC-MESSAGE: '{winner} have won against {loser}, Good Game!'
