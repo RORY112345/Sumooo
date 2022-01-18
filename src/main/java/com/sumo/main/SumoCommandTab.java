@@ -28,7 +28,7 @@ public class SumoCommandTab implements TabCompleter {
             }
         } else if (args.length == 3) {
             if (args[0].equalsIgnoreCase("admin") && args[1].equalsIgnoreCase("setlocation")) {
-                
+                return StringUtil.copyPartialMatches(args[2], Arrays.asList("player1","player2","spectator"), new ArrayList<>());
             }
         }
 
