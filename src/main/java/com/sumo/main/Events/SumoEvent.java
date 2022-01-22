@@ -27,6 +27,7 @@ public class SumoEvent implements Listener {
                 main.getPlayer1().performCommand("spawn");
                 main.getPlayer2().performCommand("spawn");
                 main.setMatchStarted(false);
+                main.setPlayer1(null);
             } else if (e.getEntity() == main.getPlayer2()) {
                 if (main.getConfig().getBoolean("FINISH-SHOW-PUBLIC") == true) {
                     Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&',main.getConfig().getString("FINISH-PUBLIC-MESSAGE").replace("{winner}", main.getPlayer2().getName()).replace("{loser}", main.getPlayer1().getName())));
@@ -36,6 +37,7 @@ public class SumoEvent implements Listener {
                 main.getPlayer2().performCommand("spawn");
                 main.getPlayer1().performCommand("spawn");
                 main.setMatchStarted(false);
+                main.setPlayer2(null);
 
 
 

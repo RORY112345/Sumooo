@@ -21,7 +21,7 @@ public class SumoCommandTab implements TabCompleter {
         List<String> TabResult = new ArrayList<>();
 
         if (args.length == 1) {
-            return StringUtil.copyPartialMatches(args[0], Arrays.asList("admin","join","start"), new ArrayList<>());
+            return StringUtil.copyPartialMatches(args[0], Arrays.asList("admin","join","start","leave","reload"), new ArrayList<>());
         } else if (args.length == 2) {
             if (args[0].equalsIgnoreCase("admin")) {
                 return StringUtil.copyPartialMatches(args[1], Arrays.asList("setlocation"), new ArrayList<>());

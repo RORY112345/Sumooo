@@ -5,6 +5,7 @@ import com.sumo.main.YML.LocUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -108,6 +109,23 @@ public class SumoCommand implements CommandExecutor {
                     main.getPlayer1().teleport(main.getModifyLocationsFile().getLocation("PLAYER1-LOCATION"));
                     main.getPlayer2().teleport(main.getModifyLocationsFile().getLocation("PLAYER2-LOCATION"));
                     main.setMatchStarted(true);
+                }
+            } else if (args[0].equalsIgnoreCase("reload")) {
+                if (player.isOp()) {
+                    main.reloadConfig();
+                    player.sendMessage(ChatColor.GREEN + "Config Reloaded!");
+                } else {
+                    player.sendMessage(ChatColor.RED + "You don't have permission to use this command.");
+                }
+            } else if (args[0].equalsIgnoreCase("leave")) {
+                if (main.getPlayer2() == player) {
+                    player.sendMessage(ChatColor.GREEN + "Successfully left the queue.");
+                    main.setPlayer2(null);
+                } else if (main.getPlayer1() == player) {
+                    player.sendMessage(ChatColor.GREEN + "Successfully left the queue.");
+                    main.setPlayer1(null);
+                } else {
+                    player.sendMessage(ChatColor.RED + "You're not in a queue!");
                 }
             }
         }
