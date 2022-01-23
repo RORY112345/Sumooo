@@ -23,6 +23,7 @@ public final class Main extends JavaPlugin {
     private Player player1Opponent = null;
     private Player player2Opponent = null;
     private boolean matchStarted = false;
+    private boolean countdownInProgress = false;
 
     @Override
     public void onEnable() {
@@ -84,12 +85,14 @@ public final class Main extends JavaPlugin {
 
     // Boolean getter
     public boolean getMatchStarted() { return matchStarted; }
+    public boolean getCountdownInProgress() { return countdownInProgress; }
 
     // Boolean setter
 
     public void setMatchStarted(boolean value) {
         this.matchStarted = value;
     }
+    public void setCountdownInProgress(boolean value) { this.countdownInProgress = value; }
 
     private void initiateFiles() throws IOException {
         locationsFile = new File(Bukkit.getServer().getPluginManager().getPlugin("Sumo").getDataFolder(), "locations.yml");

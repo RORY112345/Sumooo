@@ -10,6 +10,8 @@ PREFIX: '&f[&4Sumo&f]'
 START-SHOW-PUBLIC: true
 # FINISH-SHOW-PUBLIC(true/false) If it is true, Other Peoples will get a message in the Chat when the Match is finished and will get the results.
 FINISH-SHOW-PUBLIC: true
+# COUNTDOWN-TIME is how many seconds it will take for the countdown to finish.
+COUNTDOWN-TIME: 5
 
 # Messages
 

@@ -10,6 +10,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.io.IOException;
 
@@ -67,6 +68,14 @@ public class SumoCommand implements CommandExecutor {
 
                             player.sendMessage(ChatColor.GOLD + "Successfully set Spectator's Location to the Location your standing in.");
                         }
+                    } else if (args[1].equalsIgnoreCase("reset")) {
+                        main.setPlayer1(null);
+                        main.setPlayer2(null);
+                        main.setPlayer1Opponent(null);
+                        main.setPlayer2Opponent(null);
+                        main.setMatchStarted(false);
+                        main.setCountdownInProgress(false);
+                        player.sendMessage(ChatColor.GREEN + "Successfully Reset.");
                     }
                 } else {
                     player.sendMessage(ChatColor.RED + "You don't have any permission to use this command, If you believe this is an Error contact Server Owner / Staff.");
@@ -109,6 +118,21 @@ public class SumoCommand implements CommandExecutor {
                     main.getPlayer1().teleport(main.getModifyLocationsFile().getLocation("PLAYER1-LOCATION"));
                     main.getPlayer2().teleport(main.getModifyLocationsFile().getLocation("PLAYER2-LOCATION"));
                     main.setMatchStarted(true);
+                    main.setCountdownInProgress(true);
+                    new BukkitRunnable() {
+                        int countdown = 10; // The amount of seconds this should run for
+
+                        public void run() {
+                            if (countdown >= 1) {
+                                main.getPlayer1().sendTitle("Starts in:",Integer.toString(main.getConfig().getInt("COUNTDOWN-TIME")),5,20,5);
+                                main.getPlayer2().sendTitle("Starts in:",Integer.toString(main.getConfig().getInt("COUNTDOWN-TIME")),5,20,5);
+                                countdown--;
+                            } else {
+                                main.setCountdownInProgress(false);
+                                cancel();
+                            }
+                        }
+                    }.runTaskTimer(main, 0, 20);
                 }
             } else if (args[0].equalsIgnoreCase("reload")) {
                 if (player.isOp()) {

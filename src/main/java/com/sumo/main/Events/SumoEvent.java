@@ -6,6 +6,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
 
 public class SumoEvent implements Listener {
 
@@ -41,6 +42,16 @@ public class SumoEvent implements Listener {
 
 
 
+            }
+        }
+    }
+
+
+    @EventHandler
+    public void onMoveCountdown(PlayerMoveEvent e) {
+        if (main.getPlayer1() == e.getPlayer() || main.getPlayer2() == e.getPlayer()) {
+            if (main.getCountdownInProgress() == true) {
+                e.setCancelled(true);
             }
         }
     }
